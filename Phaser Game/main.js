@@ -1,6 +1,3 @@
-
-    
-var deathCounter = 0;
 var mainState = {  
     preload: function() { 
         game.load.spritesheet('player', 'media/orangehatlady.png' , 48 , 48 , 12)
