@@ -9,10 +9,8 @@ var mainState = {
         
         game.stage.backgroundColor = '#3598db';
 
-        // Start the Arcade physics system (for movements and collisions)
         game.physics.startSystem(Phaser.Physics.ARCADE);
 
-        // Add the physics engine to all game objects
         game.world.enableBody = true;
         
         this.cursor = game.input.keyboard.createCursorKeys();
