@@ -3,8 +3,9 @@ var mainState = {
  
        game.load.spritesheet('chef', 'media/orangehatlady.png',48, 48, 12);
        game.load.image('back', 'media/backg.png');
-       game.load.image('loud', 'media/redhatchef.png');
-       game.load.image('louds', 'media/greenhatchef.png');
+       game.load.spritesheet('loud', 'media/redhatchef.png');
+       game.load.spritesheet('louds', 'media/greenhatchef.png');
+       game.load.spritesheet('lady', 'media/bluehat.png');
         
        
    },
@@ -17,6 +18,9 @@ var mainState = {
        
        game.physics.startSystem(Phaser.Physics.ARCADE);
        game.world.enableBody = true;
+       this.loud = game.add.sprite(260,90, 'loud')
+       this.louds = game.add.sprite(10,75,'louds')
+       this.lady = game.add.sprite(200,150, 'lady')
        
        this.chef = game.add.sprite(150,10, 'chef');
        this.chef.frame = 4; 
