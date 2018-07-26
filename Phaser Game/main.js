@@ -3,6 +3,8 @@ var mainState = {
  
        game.load.spritesheet('chef', 'media/orangehatlady.png',48, 48, 12);
        game.load.image('back', 'media/backg.png');
+       game.load.image('loud', 'media/redhatchef.png');
+       game.load.image('louds', 'media/greenhatchef.png');
         
        
    },
@@ -35,17 +37,49 @@ var mainState = {
 
    update: function(){
        
+       var dir;
+       if(this.cursor.down.isDown){
+           dir = "down"
+       }
+       if(this.cursor.up.isDown){
+           dir = "up"
+       }
+       if(this.cursor.right.isDown){
+           dir = "right";
+       }
        if(this.cursor.left.isDown){
+           dir = "left";
+       }
+        if(this.chef.position.x < 70 && dir  === "left"){
+           this.chef.body.velocity.x = 0;
+           this.chef.animations.play('stop');
+       }
+       else if(this.chef.position.x > 350 && dir  === "right"){
+           this.chef.body.velocity.x = 0;
+           this.chef.animations.play('stop');
+           
+       }else if(this.chef.position.y < 0 && dir  === "up"){
+           this.chef.body.velocity.y = 0;
+           this.chef.animations.play('stop');
+           
+       }else if(this.chef.position.y > 540 && dir  === "down"){
+           this.chef.body.velocity.y = 0;
+           this.chef.animations.play('stop');
+       }
+        else if(this.cursor.right.isDown){
+          this.chef.body.velocity.x = 75;
+           this.chef.body.velocity.y = 0;
+           this.chef.animations.play('walk right');
+      } 
+       else if(this.cursor.left.isDown){
+           dir = "left";
           this.chef.body.velocity.x = -75;
            this.chef.body.velocity.y = 0;
           this.chef.animations.play('walk left');
        }
        
-       else if(this.cursor.right.isDown){
-          this.chef.body.velocity.x = 75;
-           this.chef.body.velocity.y = 0;
-           this.chef.animations.play('walk right');
-      } 
+       
+      
 ////         else if {
 ////           this.chef.body.velocity.x = 0;
 ////          this.chef.animations.play('stop');
@@ -57,6 +91,7 @@ var mainState = {
            this.chef.animations.play('walk up');
        }  
         else if(this.cursor.down.isDown){
+            dir = "down";
           this.chef.body.velocity.y = 75;
             this.chef.body.velocity.x = 0;
               this.chef.animations.play('walk down');
